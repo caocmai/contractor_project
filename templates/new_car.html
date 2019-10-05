@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<form method='POST' action='/new_car'>
+    <fieldset>
+    <legend>New Car</legend>
+    <!-- TITLE -->
+    <p>
+        <label for='model'>Model</label><br>
+        <input id='model' type='text' name='model' />
+    </p>
+    <p>
+        <label for='cost'>Cost</label><br>
+        <input id='cost' type='text' name='cost' />
+    </p>
+    <p>
+        <label for='url'>URL</label><br>
+        <input id='url' type='text' name='url' />
+    </p>
+    </fieldset>
+
+    <!-- BUTTON -->
+    <p>
+        <button type='submit'>Save Car</button>
+    </p>
+</form>
+{% endblock %}

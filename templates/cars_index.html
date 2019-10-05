@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Cars List</h1>
+
+<a href="/cars/new">New Car</a>
+<a href="/cars/delete_all">Delete Entire List</a>
+
+{% for car in cars %}
+<ul>
+    <li>Car model: {{ car.model }}</li>
+</ul>
+{% endfor %}
+{% endblock %}
