@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% for stuff in content %}
+        <h2>{{ stuff.candy_name }}</h2>
+        <h5>url: {{ stuff.url }}</h5>
+        <small>cost: {{ stuff.cost }}</small>
+    {% endfor %}
+{% endblock %}
