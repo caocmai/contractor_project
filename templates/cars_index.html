@@ -7,8 +7,7 @@
 
 <ul>
     {% for car in cars %}
-    <a href = "/cars/{{ car._id }}">Car ID</a>
-    <li>Car model: {{ car.model }}
+    <li><a href = "/cars/{{ car._id }}">{{ car.model }}</a>
     <br>
     <img src="{{ car.url }}" alt="W3Schools.com">
     </li>

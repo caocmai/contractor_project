@@ -5,8 +5,21 @@
 <br>
 <br>
 Car Model: {{ car.model }}
-Car ID: {{ car.cost }}
-car URL: {{ car.url }}
 <br>
 <img src="{{ car.url }}" alt="W3Schools.com">
+<br>
+Car cost: ${{ car.cost }}
+<br><br>
+<!-- <a href="/cars/edit/{{ car._id }}">Edit Car</a> -->
+<button onclick="window.location.href='/cars/edit/{{ car._id }}';">Edit Car</button>
+
+<p>
+    <form method="POST" action="/cars/{{ car._id }}/delete/">
+    <input type="hidden" name="_method" value="DELETE">
+    <button class="btn btn-primary" type="submit">Delete Car</button>
+</form>
+</p>
+<button onclick="window.location.href='/';">View Car List</button>
+<button onclick="window.location.href='/cars/new';">Add Another Car</button>
+
 {% endblock %}
