@@ -4,11 +4,17 @@
 <h1>Cars List</h1>
 
 <a href="/cars/new">New Car</a>
-<a href="/cars/delete_all">Delete Entire List</a>
 
-{% for car in cars %}
 <ul>
-    <li>Car model: {{ car.model }}</li>
+    {% for car in cars %}
+    <a href = "/cars/{{ car._id }}">Car ID</a>
+    <li>Car model: {{ car.model }}
+    <br>
+    <img src="{{ car.url }}" alt="W3Schools.com">
+    </li>
+    {% endfor %}
 </ul>
-{% endfor %}
+<br>
+<br>
+<a href="/cars/delete_all">Delete Entire List</a>
 {% endblock %}

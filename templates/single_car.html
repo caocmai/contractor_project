@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<a href='/'>Back to Home</a>
+<br>
+<br>
+Car Model: {{ car.model }}
+Car ID: {{ car.cost }}
+car URL: {{ car.url }}
+<br>
+<img src="{{ car.url }}" alt="W3Schools.com">
+{% endblock %}
