@@ -1,5 +1,10 @@
 {% extends "base.html" %}
 
+{% block title %}
+<meta charset='utf-8'>
+<title>Tesla Cars</title>
+{% endblock %}
+
 {% block content %}
 <h1>Cars List</h1>
 
@@ -9,7 +14,7 @@
     {% for car in cars %}
     <li><a href = "/cars/{{ car._id }}">{{ car.model }}</a>
     <br>
-    <img src="{{ car.url }}" alt="W3Schools.com">
+    <img src="{{ car.url }}" alt="Car Image">
     </li>
     {% endfor %}
 </ul>

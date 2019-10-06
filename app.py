@@ -37,6 +37,8 @@ def new_car_submit():
         "cost": request.form.get("cost"),
         "url": request.form.get("url")
     }
+    if not car["model"] or not car["cost"] or not car["url"]:
+        return render_template("error.html")
     car_id = cars.insert_one(car).inserted_id
     return redirect(url_for("car_show", passed_car_id=car_id))
 
@@ -44,6 +46,11 @@ def new_car_submit():
 def car_show(passed_car_id):
     car = cars.find_one({"_id": ObjectId(passed_car_id)})
     return render_template("single_car.html", car=car)
+
+@app.route("/cars/edit/<passed_car_id>")
+def car_edit(passed_car_id):
+    car = cars.find_one({"_id": ObjectId(passed_car_id)})
+    return render_template("edit_car.html", car=car, title="Edit Car")
 
 # This redirects becuase only need to update the car and not making new
 @app.route("/cars/<car_id>", methods=["POST"])
@@ -58,11 +65,7 @@ def car_update_change(car_id):
         {"$set": updated_car})
     return redirect(url_for("car_show", passed_car_id=car_id))
 
-@app.route("/cars/edit/<passed_car_id>")
-def car_edit(passed_car_id):
-    car = cars.find_one({"_id": ObjectId(passed_car_id)})
-    return render_template("edit_car.html", car=car, title="Edit Car")
-
+# To detele each car
 @app.route("/cars/<passed_car_id>/delete/", methods=["POST"])
 def car_delete(passed_car_id):
     cars.delete_one({"_id": ObjectId(passed_car_id)})
