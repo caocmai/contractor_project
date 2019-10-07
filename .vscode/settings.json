@@ -1,3 +1,8 @@
 {
-    "python.pythonPath": "env/bin/python3"
+    "python.pythonPath": "env/bin/python3", 
+    "editor.tokenColorCustomizations": {
+
+        "comments": "#b1b6b4"
+    }
+
 }

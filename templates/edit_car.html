@@ -6,7 +6,6 @@
 {% endblock %}
 
 {% block content %}
-car ID {{ car._id }}
 <form method="POST" action="/cars/{{ car._id }}">
     <input type="hidden" name="_method" value="PUT"/>
     {% include "partials/car_form.html" %}

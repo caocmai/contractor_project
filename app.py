@@ -37,7 +37,7 @@ def new_car_submit():
         "cost": request.form.get("cost"),
         "url": request.form.get("url")
     }
-    if not car["model"] or not car["cost"] or not car["url"]:
+    if not car["model"] or not car["cost"]: # Cause sometimes ther's no url
         return render_template("error.html")
     car_id = cars.insert_one(car).inserted_id
     return redirect(url_for("car_show", passed_car_id=car_id))
