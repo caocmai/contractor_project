@@ -1,10 +1,18 @@
 from flask import Flask, render_template, request, redirect, url_for
 from pymongo import MongoClient
 from bson.objectid import ObjectId
+import os
 
-client = MongoClient()
-db = client.contractor_project
+host = os.environ.get("MONGODB_URI", "mongodb://admin:abc123@ds331548.mlab.com:31548/heroku_bzktnvpw")
+client = MongoClient(host=f'{host}?retryWrites=false')
+db = client.get_default_database()
 cars = db.cars
+
+
+# For Local USING
+# client = MongoClient()
+# db = client.contractor_project
+# cars = db.cars
 
 app = Flask(__name__)
 
@@ -72,4 +80,4 @@ def car_delete(passed_car_id):
     return redirect(url_for("cars_list"))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0", port=os.environ.get("PORT", 5000))
