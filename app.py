@@ -4,16 +4,16 @@ from bson.objectid import ObjectId
 import os
 
 # For Heroku
-# host = os.environ.get("MONGODB_URI", "mongodb://admin:abc123@ds331548.mlab.com:31548/heroku_bzktnvpw")
-# client = MongoClient(host=f'{host}?retryWrites=false')
-# db = client.get_default_database()
-# cars = db.cars
+host = os.environ.get("MONGODB_URI", "mongodb://admin:abc123@ds331548.mlab.com:31548/heroku_bzktnvpw")
+client = MongoClient(host=f'{host}?retryWrites=false')
+db = client.get_default_database()
+cars = db.cars
 
 
 # For Local USE:
-client = MongoClient()
-db = client.contractor_project
-cars = db.cars
+# client = MongoClient()
+# db = client.contractor_project
+# cars = db.cars
 
 app = Flask(__name__)
 
