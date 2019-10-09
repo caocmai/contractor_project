@@ -5,12 +5,20 @@
 <a href='/'>Back to Home</a>
 <br>
 <br>
-Car Model: {{ car.model }}
+<font size="3">Car Model: {{ car.model }}</font>
 <br>
-<img src="{{ car.url }}" alt="Car Image">
+<img src="{{ car.url }}" alt="Car Image" class="img-thumbnail">
 <br>
-Car cost: ${{ car.cost }}
-<br><br>
+<script>
+        function numberWithCommas(x) {
+            return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+</script>
+<p 
+id="cost_color">Car cost: $<script>document.write(numberWithCommas({{ car.cost }}));</script>
+</p>
+<br>
+<!-- For href to be a button and not just hyperlink -->
 <!-- <a href="/cars/edit/{{ car._id }}">Edit Car</a> -->
 <button onclick="window.location.href='/cars/edit/{{ car._id }}';">Edit Car</button>
 
@@ -22,6 +30,6 @@ Car cost: ${{ car.cost }}
 </p>
 <!-- To make href a button instead of hypertext -->
 <button onclick="window.location.href='/';">View Car List</button>
-<button onclick="window.location.href='/cars/new';">Add Another Car</button>
+<button id="add_car_color" onclick="window.location.href='/cars/new';">Add Another Car</button>
 
 {% endblock %}

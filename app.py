@@ -3,16 +3,17 @@ from pymongo import MongoClient
 from bson.objectid import ObjectId
 import os
 
-host = os.environ.get("MONGODB_URI", "mongodb://admin:abc123@ds331548.mlab.com:31548/heroku_bzktnvpw")
-client = MongoClient(host=f'{host}?retryWrites=false')
-db = client.get_default_database()
-cars = db.cars
-
-
-# For Local USING
-# client = MongoClient()
-# db = client.contractor_project
+# For Heroku
+# host = os.environ.get("MONGODB_URI", "mongodb://admin:abc123@ds331548.mlab.com:31548/heroku_bzktnvpw")
+# client = MongoClient(host=f'{host}?retryWrites=false')
+# db = client.get_default_database()
 # cars = db.cars
+
+
+# For Local USE:
+client = MongoClient()
+db = client.contractor_project
+cars = db.cars
 
 app = Flask(__name__)
 
@@ -45,7 +46,7 @@ def new_car_submit():
         "cost": request.form.get("cost"),
         "url": request.form.get("url")
     }
-    if not car["model"] or not car["cost"]: # Cause sometimes ther's no url
+    if not car["model"] or not car["cost"]: # Cause sometimes there's no url
         return render_template("error.html")
     car_id = cars.insert_one(car).inserted_id
     return redirect(url_for("car_show", passed_car_id=car_id))

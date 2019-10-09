@@ -8,17 +8,16 @@
 {% block content %}
 <h1>Tesla Cars List</h1>
 
-<a href="/cars/new">Add New Car</a>
-
+<a href="/cars/new"><font size="3">Add New Car</font></a>
+<br>
 <ul>
     {% for car in cars %}
-    <li><a href = "/cars/{{ car._id }}">{{ car.model }}</a>
+    <li ><a id="list_text_color" href = "/cars/{{ car._id }}"><font size="4">{{ car.model }}</font></a>
     <br>
-    <img src="{{ car.url }}" alt="Car Image">
+    <!-- <img src="{{ car.url }}" alt="Car Image" class="img-thumbnail"> -->
     </li>
     {% endfor %}
 </ul>
 <br>
-<br>
-<a href="/cars/delete_all">Delete Entire List</a>
+<a id="delete_all" href="/cars/delete_all">Delete Entire List</a>
 {% endblock %}
