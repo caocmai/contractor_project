@@ -1,2 +1,5 @@
 # contractor_project
-A simple app to showcase CRUD (Create, Remove, Update, Delete)
+A simple app to showcase CRUD (Create, Read, Update, Delete)
+
+User can add a car to the car list.
+The car in the car list can then be displayed, or it can be update with new attributes, or be deleted.

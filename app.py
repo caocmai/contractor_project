@@ -26,19 +26,23 @@ app = Flask(__name__)
 # def index():
 #     return render_template("home.html", msg="faslk is stpd")
 
+# Display list of cars
 @app.route("/")
 def cars_list():
     return render_template("cars_index.html", cars=cars.find())
 
+# Create new car
 @app.route("/cars/new")
 def new_car():
     return render_template("new_car.html", car={}, title="New Car")
 
+# Delete entire car list
 @app.route("/cars/delete_all")
 def delete_all():
     cars.remove()
     return redirect(url_for("cars_list"))
 
+# Add new car
 @app.route("/new_car", methods=["POST"])
 def new_car_submit():
     car = {
@@ -51,11 +55,13 @@ def new_car_submit():
     car_id = cars.insert_one(car).inserted_id
     return redirect(url_for("car_show", passed_car_id=car_id))
 
+# Show the car with object
 @app.route("/cars/<passed_car_id>")
 def car_show(passed_car_id):
     car = cars.find_one({"_id": ObjectId(passed_car_id)})
     return render_template("single_car.html", car=car)
 
+# Edit the car object
 @app.route("/cars/edit/<passed_car_id>")
 def car_edit(passed_car_id):
     car = cars.find_one({"_id": ObjectId(passed_car_id)})
